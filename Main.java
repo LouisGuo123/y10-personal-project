@@ -259,9 +259,9 @@ public class Main {
 				}
 			}
 			
-			NetworkFrame frame = new NetworkFrame(testing_images, testing_labels, network);
-			
 			System.out.println("Average cost of " + average_cost + ", with " + (double)correct * 100 / (double)testing_size + "% correct.");
+			
+			NetworkFrame frame = new NetworkFrame(testing_images, testing_labels, network);
 		}
 		
 		else {
