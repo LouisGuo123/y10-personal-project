@@ -5,11 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-import louis_guo.Helper;
 import louis_guo.io.NetworkReader;
 import louis_guo.io.NetworkWriter;
 import louis_guo.io.MNISTReader;
@@ -21,7 +19,7 @@ public class Main {
 		System.out.print("Getting MNIST data... ");
 		
 		InputStream training_label_reader_stream = Main.class.getResourceAsStream("/louis_guo/train-labels-idx1-ubyte");
-		InputStream training_image_reader_stream = Main.class.getResourceAsStream("/louis_guo/train-labels-idx1-ubyte");
+		InputStream training_image_reader_stream = Main.class.getResourceAsStream("/louis_guo/train-images-idx3-ubyte");
 		
 		MNISTReader training_label_reader = new MNISTReader(training_label_reader_stream);
 		MNISTReader training_image_reader = new MNISTReader(training_image_reader_stream);
@@ -62,7 +60,7 @@ public class Main {
 			start_index = 0;
 			cycles = 0;
 			
-			seed = ThreadLocalRandom.current().nextLong();
+			seed = rand.nextLong();
 		}
 		else {
 			System.out.print("network found... ");
@@ -141,7 +139,7 @@ public class Main {
 				if(training_index == training_size - 1) {
 					cycles++;
 					
-					seed = ThreadLocalRandom.current().nextLong();
+					seed = rand.nextLong();
 					
 					Helper.shuffle(training_labels, seed);
 					Helper.shuffle(training_images, seed);
@@ -174,7 +172,7 @@ public class Main {
 						max_j = j;
 					}
 					
-					if(training_labels[i][j] > max_value) {
+					if(training_labels[i][j] > max_value_expected) {
 						max_value_expected = training_labels[i][j];
 						max_j_expected = j;
 					}
@@ -205,8 +203,6 @@ public class Main {
 		else if(setting.equals("testing")) {
 			System.out.print("Reading MNIST testing data... ");
 			
-			long test_seed = ThreadLocalRandom.current().nextLong();
-			
 			double[][] testing_labels = testing_label_reader.readLabels();
 			double[][] testing_images = testing_image_reader.readImages();
 			
@@ -217,7 +213,6 @@ public class Main {
 			int testing_size = testing_images.length;
 			
 			int[] wrong = new int[network.getOutput().length];
-			int wrong_index = 0;
 			
 			System.out.println("done!");
 			
@@ -244,7 +239,7 @@ public class Main {
 						max_j = j;
 					}
 					
-					if(testing_labels[i][j] > max_value) {
+					if(testing_labels[i][j] > max_value_expected) {
 						max_value_expected = testing_labels[i][j];
 						max_j_expected = j;
 					}
@@ -255,12 +250,12 @@ public class Main {
 				}
 				else {
 					wrong[max_j_expected]++;
-					wrong_index = i;
 				}
 			}
 			
 			System.out.println("Average cost of " + average_cost + ", with " + (double)correct * 100 / (double)testing_size + "% correct.");
 			
+			@SuppressWarnings("unused")
 			NetworkFrame frame = new NetworkFrame(testing_images, testing_labels, network);
 		}
 		

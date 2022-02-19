@@ -34,11 +34,10 @@ import javax.swing.JTextPane;
 import javax.swing.JFormattedTextField;
 
 import louis_guo.network.Network;
-import louis_guo.rendering.ImagePanel;
-import louis_guo.rendering.OutputPanel;
 import louis_guo.Helper;
 
 public class MainPanel extends JPanel {
+	private static final long serialVersionUID = -6829867209149395940L;
 	
 	public JLabel image_text;
 	public ImagePanel image_panel;
@@ -53,7 +52,7 @@ public class MainPanel extends JPanel {
 	public JButton roll_random_correct;
 	public JButton roll_random_wrong;
 	public JLabel label_text;
-	public JComboBox selected_label;
+	public JComboBox<String> selected_label;
 	public JLabel goto_text;
 	public NumberFormat goto_format;
 	public JFormattedTextField goto_field;
@@ -64,8 +63,8 @@ public class MainPanel extends JPanel {
 	public JButton clear_image;
 	public JLabel weight_text;
 	public JLabel size_text;
-	public JComboBox selected_weight;
-	public JComboBox selected_size;
+	public JComboBox<Double> selected_weight;
+	public JComboBox<String> selected_size;
 	
 	public JButton help_button;
 	public JFrame help_frame;
@@ -244,7 +243,7 @@ public class MainPanel extends JPanel {
 		label_text = new JLabel("Number Filter");
 		label_text.setForeground(Color.WHITE);
 		
-		selected_label = new JComboBox(new String[] {"None", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"});
+		selected_label = new JComboBox<String>(new String[] {"None", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"});
 		selected_label.setToolTipText("Limit the Random Images to a Specific Number");
 		
 		goto_text = new JLabel("Image ID");
@@ -300,14 +299,14 @@ public class MainPanel extends JPanel {
 		weight_text = new JLabel("Brush Weight");
 		weight_text.setForeground(Color.WHITE);
 		
-		selected_weight = new JComboBox(new Double[] {0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0});
+		selected_weight = new JComboBox<Double>(new Double[] {0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0});
 		selected_weight.setSelectedIndex(10);
 		selected_weight.setToolTipText("Set the Brush Painting Value");
 		
 		size_text = new JLabel("Brush Size");
 		size_text.setForeground(Color.WHITE);
 		
-		selected_size = new JComboBox(new String[] {"Small", "Large"});
+		selected_size = new JComboBox<String>(new String[] {"Small", "Large"});
 		selected_size.setSelectedIndex(1);
 		selected_size.setToolTipText("Set the Brush Size");
 		

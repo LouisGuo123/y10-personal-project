@@ -3,13 +3,14 @@ package louis_guo.rendering;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import louis_guo.network.Network;
-import louis_guo.rendering.MainPanel;
 
 public class NetworkFrame extends JFrame {
-	
+	private static final long serialVersionUID = -8988922372699935477L;
+
 	public MainPanel panel;
 	
 	public double[][] images;
@@ -29,6 +30,7 @@ public class NetworkFrame extends JFrame {
 		setLocationRelativeTo(null);
 		
 		setBackground(Color.BLACK);
+		setIconImage((new ImageIcon(NetworkFrame.class.getResource("/louis_guo/assets/network-icon.png"))).getImage());
 		
 		add(panel, BorderLayout.CENTER);
 		pack();
