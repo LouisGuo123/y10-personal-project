@@ -7,8 +7,6 @@ import java.io.InputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-import louis_guo.io.ByteWriter;
-
 public class ByteReader {
 	private BufferedInputStream stream;
 	

@@ -3,8 +3,6 @@ package louis_guo.io;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import louis_guo.io.ByteWriter;
-
 public class NetworkWriter extends ByteWriter {
 	public NetworkWriter(String url) throws FileNotFoundException {
 		super(url);

@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import louis_guo.Helper;
 
 public class OutputPanel extends JPanel {
+	private static final long serialVersionUID = -5771185086380692789L;
 	
 	public int margin_x = 50;
 	public int margin_y = 20;

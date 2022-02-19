@@ -2,9 +2,6 @@ package louis_guo.network;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import louis_guo.network.Functions;
-import louis_guo.Helper;
-
 public class Network {
 	public double[][] nodes;
 	public double[][][] weights;

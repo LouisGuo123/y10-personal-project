@@ -1,23 +1,16 @@
 package louis_guo.rendering;
 
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseEvent;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.util.Arrays;
 
 import javax.swing.JPanel;
 
-import louis_guo.network.Network;
-import louis_guo.Helper;
-
 public class ImagePanel extends JPanel {
+	private static final long serialVersionUID = -5445695756091975798L;
 	
 	public int margin_x = 20;
 	public int margin_y = 5;

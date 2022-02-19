@@ -3,8 +3,6 @@ package louis_guo.io;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import louis_guo.io.ByteReader;
-
 public class NetworkReader extends ByteReader {
 	public NetworkReader(String url) throws FileNotFoundException {
 		super(url);

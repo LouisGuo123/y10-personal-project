@@ -4,8 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.IOException;
 
-import louis_guo.io.ByteReader;
-
 public class MNISTReader extends ByteReader {
 	public MNISTReader(String url) throws FileNotFoundException {
 		super(url);
